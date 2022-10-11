@@ -1,0 +1,90 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12
+  },
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "plugins": ["import", "jsx-a11y", "prettier", "react", "react-hooks", "@typescript-eslint"],
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "eslint:recommended",
+    "prettier",
+    "plugin:jsx-a11y/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ],
+  "rules": {
+    "no-var": "off", // use vars
+    "vars-on-top": "off", // declare vars everywhere
+    "no-shadow": "off", // use Enums
+    "no-nested-ternary": "off", // allows use expressions like: a < b ? 'smaller' : a > b ? 'larger' : 'equal'
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "no-dupe-keys": "error", // ts(1117)
+    "no-dupe-args": "error", // ts(2300)
+    "no-console": ["error", { "allow": ["warn", "error", "assert"] }], // allowed only: 'console.warn', 'console.error' and 'console.assert'
+    "no-plusplus": "off", // allows use ++ operators
+    "no-continue": "off", // allows use 'continue' operator in loops
+    "no-restricted-syntax": "off", // allows use for-in/for-of loops
+    "no-param-reassign": "off",
+    "prefer-template": "off", // allows to concatenate strings using + operator
+    "prefer-regex-literals": "off", // allows explicit use of the RegExp class
+
+    // *** eslint ***
+    "@typescript-eslint/no-use-before-define": "off", // allows using JS's "hoisting" feature
+    "@typescript-eslint/lines-between-class-members": "off",
+    "@typescript-eslint/ban-types": "warn",
+    "@typescript-eslint/no-explicit-any": "error", // allows to declare `any` typed values
+
+    // remove (return back to error-level by default) all following settings related to `any` type when all source-files become triaged
+    // "@typescript-eslint/restrict-template-expressions": "off", // allows to use `any` typed value in template literal expression
+    // "@typescript-eslint/no-unsafe-return": "off", // allows unsafe return of an `any` typed value
+    // "@typescript-eslint/no-unsafe-call": "off", // allows unsafe call of an `any` typed value
+    // "@typescript-eslint/no-unsafe-member-access": "off", // allows unsafe member access to an `any` value
+    "@typescript-eslint/no-unsafe-assignment": "off", // allows unsafe assignment of an `any`
+    "@typescript-eslint/no-unsafe-argument": "off", // allows unsafe pass `any` as a function argument
+    "@typescript-eslint/no-floating-promises": "off", // INVESTIGATE!!!
+
+    // *** react ***
+    "react/react-in-jsx-scope": "off", // allows no import React
+    "react/no-unused-prop-types": "warn",
+    "react/no-children-prop": "off", // allows to pass jsx-children as a property (and do not nest between the opening and closing tags)
+    "react/require-default-props": "off",
+    "react/function-component-definition": "off", // turn off the rule from "eslint-config-airbnb"
+    "react/jsx-props-no-spreading": "off",
+    "react/sort-comp": "off",
+    "react/self-closing-comp": "warn",
+
+    // *** jsx-a11y ***
+    "jsx-a11y/no-autofocus": "off",
+
+    // *** import ***
+    "import/no-cycle": "off", // INVESTIGATE!!!
+    "import/order": "off",
+    "import/prefer-default-export": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {} // this loads <rootdir>/tsconfig.json to eslint
+    }
+  },
+  "ignorePatterns": ["node_modules/"]
+}
